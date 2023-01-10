@@ -1,0 +1,26 @@
+﻿<Window x:Class="Share_and_Spread.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Share_and_Spread"
+        mc:Ignorable="d"
+        Title="Share and Spread" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="tb_fullname" HorizontalAlignment="Left" Height="23" Margin="304,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
+        <Label Content="Full name:" HorizontalAlignment="Left" Height="23" Margin="150,69,0,0" VerticalAlignment="Top" Width="136" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tb_email" HorizontalAlignment="Left" Height="23" Margin="304,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Height="23" Margin="150,107,0,0" VerticalAlignment="Top" Width="136" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tb_password" HorizontalAlignment="Left" Height="23" Margin="304,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Height="23" Margin="150,145,0,0" VerticalAlignment="Top" Width="136" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tb_password_ver" HorizontalAlignment="Left" Height="23" Margin="304,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
+        <Label Content="Password Verification:" HorizontalAlignment="Left" Height="23" Margin="150,187,0,0" VerticalAlignment="Top" Width="136" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tb_phonenumber" HorizontalAlignment="Left" Height="23" Margin="304,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
+        <Label Content="Phone Number:" HorizontalAlignment="Left" Height="23" Margin="150,227,0,0" VerticalAlignment="Top" Width="136" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tb_address" HorizontalAlignment="Left" Height="23" Margin="304,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
+        <Label Content="Full address &amp; Post code:" HorizontalAlignment="Left" Height="23" Margin="103,266,0,0" VerticalAlignment="Top" Width="183" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Button Content="Send Complaint/Issue" HorizontalAlignment="Center" Height="34" Margin="0,357,0,0" VerticalAlignment="Top" Width="136" Click="Send_Complaint"/>
+        <Button Content="View Responses" HorizontalAlignment="Left" Height="43" Margin="28,10,0,0" VerticalAlignment="Top" Width="91" Click="View_Responses"/>
+
+    </Grid>
+</Window>

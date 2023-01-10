@@ -17,6 +17,7 @@ using System.Net.Sockets;
 using System.Windows.Markup;
 using System.IO;
 using System.Net.WebSockets;
+using System.Threading.Tasks;
 
 namespace Share_and_Spread
 {
@@ -30,7 +31,7 @@ namespace Share_and_Spread
         {
             InitializeComponent();
             
-            client.Connect("fe80::6f9e:9169:a7a7:338b%12", 8888);
+            client.Connect("192.168.1.154", 8888);
             
         }
 
@@ -61,21 +62,22 @@ namespace Share_and_Spread
         }
         public void Send(string message)
         {
-            data = System.Text.Encoding.ASCII.GetBytes(message);
+            data = System.Text.Encoding.ASCII.GetBytes("|"+message);
             networkStream.Write(data, 0, data.Length);
+            Receive();
         }
         public void Close()
         {
             clientSocket.Close();
         }
-        public string Receive(string message)
+        public string Receive()
         {
-            Console.WriteLine("Sent: {0}", message);
             data = new Byte[256];
             String responseData = String.Empty;
             Int32 bytes = networkStream.Read(data, 0, data.Length);
             responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
 
+            MessageBox.Show(responseData);
             Console.WriteLine("Received: {0}", responseData);
             return "nothing";
         }

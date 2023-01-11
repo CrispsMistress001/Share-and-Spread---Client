@@ -61,3 +61,7 @@ C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread 
 C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.pdb
 C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.genruntimeconfig.cache
 C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\ref\Share_and_Spread.dll
+C:\Users\Administrator\Documents\[mine\Coding\C#\College\Assignment 2 - Share and Spread\Client\Share-and-Spread---Client\Share_and_Spread\obj\Debug\net6.0-windows\ResponseView.g.cs
+C:\Users\Administrator\Documents\[mine\Coding\C#\College\Assignment 2 - Share and Spread\Client\Share-and-Spread---Client\Share_and_Spread\obj\Debug\net6.0-windows\ResponseView.baml
+C:\Users\Administrator\Documents\[mine\Coding\C#\College\Assignment 2 - Share and Spread\Client\Share-and-Spread---Client\Share_and_Spread\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\Administrator\Documents\[mine\Coding\C#\College\Assignment 2 - Share and Spread\Client\Share-and-Spread---Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.csproj.CopyComplete

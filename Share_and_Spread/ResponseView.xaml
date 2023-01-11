@@ -6,12 +6,20 @@
         xmlns:local="clr-namespace:Share_and_Spread"
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
-    <Grid>
+    <Grid >
         <TextBox HorizontalAlignment="Left" Height="20" Margin="100,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="224"/>
         <TextBox HorizontalAlignment="Left" Height="19" Margin="100,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="224"/>
         <Label Content="Email:" HorizontalAlignment="Left" Height="26" Margin="14,7,0,0" VerticalAlignment="Top" Width="86" HorizontalContentAlignment="Right"/>
         <Label Content="Password:" HorizontalAlignment="Left" Height="26" Margin="14,38,0,0" VerticalAlignment="Top" Width="86" HorizontalContentAlignment="Right"/>
         <Button x:Name="btn_login" Content="Login" HorizontalAlignment="Left" Height="34" Margin="375,19,0,0" VerticalAlignment="Top" Width="101"/>
+        <TabControl HorizontalAlignment="Center" Height="355" Margin="0,69,0,0" VerticalAlignment="Top" Width="780">
+            <TabItem Header="Complaints">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Messages">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>

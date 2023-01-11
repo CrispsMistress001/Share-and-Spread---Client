@@ -17,9 +17,12 @@ using System.Net.Sockets;
 using System.Windows.Markup;
 using System.IO;
 using System.Net.WebSockets;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Xml;
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
+//using System.Text.Json;
+//using System.Text.Json.Serialization;
 
 namespace Share_and_Spread
 {
@@ -28,12 +31,13 @@ namespace Share_and_Spread
     /// </summary>
     /// 
 
+
     public class DataList
     {
         public string Fullname { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string PasswordVer { get; set; }
+        public string Title { get; set; }
         public string Phonenumber { get; set; }
         public string Address { get; set; }
         public string Complaint { get; set; }
@@ -42,20 +46,23 @@ namespace Share_and_Spread
 
     public partial class MainWindow : Window
     {
+        private int UserID;
         public IDGSocketClient client = new IDGSocketClient();
         public MainWindow()
         {
             InitializeComponent();
-            
-            client.Connect("localhost", 8888);
-            
+            Complaint_Window.Visibility = Visibility.Visible;
+            Complaint_View_Window.Visibility = Visibility.Hidden;
+            client.Connect("192.168.1.154", 8888);
+
         }
 
         private void View_Responses(object sender, RoutedEventArgs e)
         {
-
+            Complaint_Window.Visibility = Visibility.Hidden;
+            Complaint_View_Window.Visibility = Visibility.Visible;
         }
-        
+
         private void Send_Complaint(object sender, RoutedEventArgs e)
         {
             var List = new DataList
@@ -63,15 +70,56 @@ namespace Share_and_Spread
                 Fullname = tb_fullname.Text,
                 Email = tb_email.Text,
                 Password = tb_password.Text,
-                PasswordVer = tb_password_ver.Text,
+                Title = tb_title.Text,
                 Phonenumber = tb_phonenumber.Text,
                 Address = tb_address.Text,
                 Complaint = tb_Complaint.Text
             };
-            client.Send("Send|"+JsonSerializer.Serialize<DataList>(List));
-            Console.Read();
+            MessageBox.Show(client.Send("Send|" + JsonConvert.SerializeObject(List)));
         }
 
+        private void btn_ComplaintView_Click(object sender, RoutedEventArgs e)
+        {
+            Complaint_Window.Visibility = Visibility.Visible;
+            Complaint_View_Window.Visibility = Visibility.Hidden;
+        }
+
+        private void btn_login_Click(object sender, RoutedEventArgs e)
+        {
+            var Email = tb_Login_Email.Text;
+            var Password = tb_Login_Password.Text;
+
+
+            JObject o = JObject.FromObject(new
+            {
+                Email = tb_Login_Email.Text,
+                Password = tb_Login_Password.Text
+            });
+            var TEMP = client.Send("Login|" + o.ToString());
+            if (TEMP.Split('|')[0] == "Logged in!")
+            {
+                MessageBox.Show("Logged in!");
+                UserID = Int32.Parse(TEMP.Split('|')[1]);
+
+                TEMP = client.Send("Retrieve|" + UserID.ToString());
+
+                ColumnDefinition colDef1 = new ColumnDefinition();
+                Grid_Complaint_List.ColumnDefinitions.Add(colDef1);
+                for (int i = 1; i < TEMP.Split(new string[] { "|BRK|" }, StringSplitOptions.None).Length; i++)
+                {
+
+                    lsb_Complaint_List.Items.Add(TEMP.Split(new string[] { "|BRK|" }, StringSplitOptions.None)[i]);
+
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Failed to login!");
+            }
+        }
+        /////////////////////////////////////// SEPARATE FUNCTIONS ////////////////////////////////////////////////////////////////////////
     }
 
 
@@ -82,15 +130,31 @@ namespace Share_and_Spread
         Byte[] data;
         public void Connect(string ipAddress, int port)
         {
-            clientSocket.ConnectAsync(ipAddress, port);
+            try
+            {
+                clientSocket.ConnectAsync(ipAddress, port);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Failed to connect to the server");
+                Console.WriteLine("Message - " + e.Message);
+            }
         }
         public string Send(string message)
         {
-            networkStream = clientSocket.GetStream();
-            data = System.Text.Encoding.ASCII.GetBytes(message);
-            networkStream.Write(data, 0, data.Length);
-            networkStream.Flush();
-            return Receive();
+            try
+            {
+                networkStream = clientSocket.GetStream();
+                data = System.Text.Encoding.ASCII.GetBytes(message);
+                networkStream.Write(data, 0, data.Length);
+                networkStream.Flush();
+                return Receive();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error-" + e.Message);
+            }
+            return "";
         }
         public void Close()
         {
@@ -104,10 +168,8 @@ namespace Share_and_Spread
             String responseData = String.Empty;
             Int32 bytes = networkStream.Read(data, 0, data.Length);
             responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-
-            MessageBox.Show(responseData);
             Console.WriteLine("Received: {0}", responseData);
-            return "nothing";
+            return responseData;
         }
     }
 }

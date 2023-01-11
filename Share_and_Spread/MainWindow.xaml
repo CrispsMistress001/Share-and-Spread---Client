@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Share_and_Spread"
         mc:Ignorable="d"
-        Title="Share and Spread" Height="450" Width="800">
+        Title="Share and Spread" Height="500" Width="800">
     <Grid>
         <TextBox x:Name="tb_fullname" HorizontalAlignment="Left" Height="23" Margin="304,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
         <Label Content="Full name:" HorizontalAlignment="Left" Height="23" Margin="150,69,0,0" VerticalAlignment="Top" Width="136" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
@@ -19,8 +19,10 @@
         <Label Content="Phone Number:" HorizontalAlignment="Left" Height="23" Margin="150,227,0,0" VerticalAlignment="Top" Width="136" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
         <TextBox x:Name="tb_address" HorizontalAlignment="Left" Height="23" Margin="304,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
         <Label Content="Full address &amp; Post code:" HorizontalAlignment="Left" Height="23" Margin="103,266,0,0" VerticalAlignment="Top" Width="183" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Button Content="Send Complaint/Issue" HorizontalAlignment="Center" Height="34" Margin="0,357,0,0" VerticalAlignment="Top" Width="136" Click="Send_Complaint"/>
+        <Button Content="Send Complaint/Issue" HorizontalAlignment="Left" Height="34" Margin="654,390,0,0" VerticalAlignment="Top" Width="136" Click="Send_Complaint"/>
         <Button Content="View Responses" HorizontalAlignment="Left" Height="43" Margin="28,10,0,0" VerticalAlignment="Top" Width="91" Click="View_Responses"/>
+        <TextBox x:Name="tb_Complaint" HorizontalAlignment="Left" Height="100" Margin="304,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
+        <Label Content="Complaint:" HorizontalAlignment="Left" Height="23" Margin="103,307,0,0" VerticalAlignment="Top" Width="183" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
 
     </Grid>
 </Window>

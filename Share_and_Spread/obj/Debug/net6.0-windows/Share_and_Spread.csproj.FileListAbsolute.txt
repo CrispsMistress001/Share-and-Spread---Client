@@ -40,3 +40,24 @@ C:\Users\Administrator\Documents\[mine\Coding\C#\College\Assignment 2 - Share an
 C:\Users\Administrator\Documents\[mine\Coding\C#\College\Assignment 2 - Share and Spread\Client\Share-and-Spread---Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.pdb
 C:\Users\Administrator\Documents\[mine\Coding\C#\College\Assignment 2 - Share and Spread\Client\Share-and-Spread---Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.genruntimeconfig.cache
 C:\Users\Administrator\Documents\[mine\Coding\C#\College\Assignment 2 - Share and Spread\Client\Share-and-Spread---Client\Share_and_Spread\obj\Debug\net6.0-windows\ref\Share_and_Spread.dll
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\bin\Debug\net6.0-windows\Share_and_Spread.exe
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\bin\Debug\net6.0-windows\Share_and_Spread.deps.json
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\bin\Debug\net6.0-windows\Share_and_Spread.runtimeconfig.json
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\bin\Debug\net6.0-windows\Share_and_Spread.dll
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\bin\Debug\net6.0-windows\Share_and_Spread.pdb
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.csproj.AssemblyReference.cache
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread_MarkupCompile.cache
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread_MarkupCompile.lref
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.g.resources
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.AssemblyInfoInputs.cache
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.AssemblyInfo.cs
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.dll
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\refint\Share_and_Spread.dll
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.pdb
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\Share_and_Spread.genruntimeconfig.cache
+C:\Users\Administrator\Documents\[User\College\Application Dev\Sahre and Spread - Client\Share and Spread - Client\Share_and_Spread\obj\Debug\net6.0-windows\ref\Share_and_Spread.dll

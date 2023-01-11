@@ -17,13 +17,29 @@ using System.Net.Sockets;
 using System.Windows.Markup;
 using System.IO;
 using System.Net.WebSockets;
-using System.Threading.Tasks;
+
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Share_and_Spread
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
+    public class DataList
+    {
+        public string Fullname { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string PasswordVer { get; set; }
+        public string Phonenumber { get; set; }
+        public string Address { get; set; }
+        public string Complaint { get; set; }
+
+    }
+
     public partial class MainWindow : Window
     {
         public IDGSocketClient client = new IDGSocketClient();
@@ -31,7 +47,7 @@ namespace Share_and_Spread
         {
             InitializeComponent();
             
-            client.Connect("192.168.1.154", 8888);
+            client.Connect("localhost", 8888);
             
         }
 
@@ -39,10 +55,20 @@ namespace Share_and_Spread
         {
 
         }
-
+        
         private void Send_Complaint(object sender, RoutedEventArgs e)
         {
-            client.Send("Hello");
+            var List = new DataList
+            {
+                Fullname = tb_fullname.Text,
+                Email = tb_email.Text,
+                Password = tb_password.Text,
+                PasswordVer = tb_password_ver.Text,
+                Phonenumber = tb_phonenumber.Text,
+                Address = tb_address.Text,
+                Complaint = tb_Complaint.Text
+            };
+            client.Send("Send|"+JsonSerializer.Serialize<DataList>(List));
             Console.Read();
         }
 
@@ -56,16 +82,15 @@ namespace Share_and_Spread
         Byte[] data;
         public void Connect(string ipAddress, int port)
         {
-            clientSocket.Connect(ipAddress, port);
-
+            clientSocket.ConnectAsync(ipAddress, port);
         }
-        public void Send(string message)
+        public string Send(string message)
         {
             networkStream = clientSocket.GetStream();
-            data = System.Text.Encoding.ASCII.GetBytes(message+"<|EOM|>");
+            data = System.Text.Encoding.ASCII.GetBytes(message);
             networkStream.Write(data, 0, data.Length);
             networkStream.Flush();
-            Receive();
+            return Receive();
         }
         public void Close()
         {

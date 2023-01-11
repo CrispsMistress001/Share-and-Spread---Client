@@ -57,13 +57,14 @@ namespace Share_and_Spread
         public void Connect(string ipAddress, int port)
         {
             clientSocket.Connect(ipAddress, port);
-            networkStream = clientSocket.GetStream();
 
         }
         public void Send(string message)
         {
-            data = System.Text.Encoding.ASCII.GetBytes("|"+message);
+            networkStream = clientSocket.GetStream();
+            data = System.Text.Encoding.ASCII.GetBytes(message+"<|EOM|>");
             networkStream.Write(data, 0, data.Length);
+            networkStream.Flush();
             Receive();
         }
         public void Close()
@@ -72,6 +73,8 @@ namespace Share_and_Spread
         }
         public string Receive()
         {
+            networkStream = clientSocket.GetStream();
+
             data = new Byte[256];
             String responseData = String.Empty;
             Int32 bytes = networkStream.Read(data, 0, data.Length);

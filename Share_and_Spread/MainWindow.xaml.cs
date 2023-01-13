@@ -45,7 +45,7 @@ namespace Share_and_Spread
 
     public partial class MainWindow : Window
     {
-        private int UserID;
+        private int UserID,ComplaintID;
         public IDGSocketClient client = new IDGSocketClient();
         public MainWindow()
         {
@@ -85,25 +85,40 @@ namespace Share_and_Spread
 
         private void lsb_Complaint_List_PreviewMouseDown(object sender, MouseEventArgs e) {
             var Boxitem = ItemsControl.ContainerFromElement(sender as ListBox, e.OriginalSource as DependencyObject) as ListBoxItem;
+            lsb_View_Complaint.Items.Clear();
+
             if (Boxitem != null)
             {
+                ComplaintID = 0;
                 tbc_List.SelectedIndex = 1;
-                var TEMP = client.Send("ViewComplaint|"+ Boxitem.Content);
-
+                ComplaintID = Int32.Parse(Boxitem.Content.ToString().Split(':')[1]);
+                String TEMP = client.Send("ViewComplaint|"+ ComplaintID.ToString());
                 if (TEMP == "Found nothing!")
                 {
                     MessageBox.Show(TEMP);
                 }
                 else
                 {
+                    //MessageBox.Show(TEMP);
                     foreach (var item in TEMP.Split(new string[] { "|BRK|" }, StringSplitOptions.None))
                     {
-                        
-                        //lsb_View_Complaint.Items.Add(new ListViewItem(new string[] { item }));
+                        //MessageBox.Show(item);
+                        lsb_View_Complaint.Items.Add(item);
                     }
 
-
                 }
+            }
+        }
+
+        private void btn_Send_Click(object sender, RoutedEventArgs e)
+        {
+            var Send_Request = client.Send("SendMessage|" + ComplaintID.ToString()+"|"+tb_SendMessage.Text);
+            if (Send_Request == "Succesful!")
+            {
+                MessageBox.Show(Send_Request);
+            }
+            else {
+               MessageBox.Show("Could not send a message!");
             }
         }
 
@@ -119,22 +134,22 @@ namespace Share_and_Spread
                 Email = tb_Login_Email.Text,
                 Password = tb_Login_Password.Text
             });
-            var TEMP = client.Send("Login|" + o.ToString());
-            if (TEMP.Split('|')[0] == "Logged in!")
+            var Login_Request= client.Send("Login|" + o.ToString());
+            if (Login_Request.Split('|')[0] == "Logged in!")
             {
                 MessageBox.Show("Logged in!");
-                UserID = Int32.Parse(TEMP.Split('|')[1]);
+                UserID = Int32.Parse(Login_Request.Split('|')[1]);
 
-                TEMP = client.Send("Retrieve|" + UserID.ToString());
-                if (TEMP == "Found nothing!")
+                Login_Request = client.Send("Retrieve|" + UserID.ToString());
+                if (Login_Request == "Found nothing!")
                 {
-                    MessageBox.Show(TEMP);
+                    MessageBox.Show(Login_Request);
                 }
                 else
                 {
-                    foreach (var item in TEMP.Split(new string[] { "|BRK|" }, StringSplitOptions.None))
+                    foreach (var item2 in Login_Request.Split(new string[] { "|BRK|" }, StringSplitOptions.None))
                     {
-                        String[] itemsDepth = item.Split(new string[] { ";;;" }, StringSplitOptions.None);
+                        String[] itemsDepth = item2.Split(new string[] { ";;;" }, StringSplitOptions.None);
                         // MessageBox.Show(itemsDepth[0]);
                         lsb_Complaint_List.Items.Add(itemsDepth[0] + ":" + itemsDepth[1]);
                     }
@@ -197,6 +212,7 @@ namespace Share_and_Spread
             data = new Byte[256];
             String responseData = String.Empty;
             Int32 bytes = networkStream.Read(data, 0, data.Length);
+            networkStream.Flush();
             responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
             Console.WriteLine("Received: {0}", responseData);
             return responseData;

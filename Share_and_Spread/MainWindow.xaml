@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Share_and_Spread"
         mc:Ignorable="d"
-        Title="Share and Spread" Height="500" Width="800">
+        Title="Share and Spread" Height="550" Width="800">
     <Grid>
         <Grid x:Name="Complaint_Window" Visibility="Hidden">
             <TextBox x:Name="tb_fullname" HorizontalAlignment="Left" Height="23" Margin="304,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
@@ -49,6 +49,8 @@
                 </TabItem>
             </TabControl>
             <Button x:Name="btn_ComplaintView" Content="Go Back" HorizontalAlignment="Left" Height="34" Margin="504,19,0,0" VerticalAlignment="Top" Width="101" Click="btn_ComplaintView_Click"/>
+            <TextBox x:Name="tb_SendMessage" HorizontalAlignment="Left" Height="30" Margin="56,444,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="420"/>
+            <Button x:Name="btn_Send" Content="Send Message" HorizontalAlignment="Left" Height="30" Margin="513,444,0,0" VerticalAlignment="Top" Width="92" Click="btn_Send_Click"/>
         </Grid>
     </Grid>
 </Window>

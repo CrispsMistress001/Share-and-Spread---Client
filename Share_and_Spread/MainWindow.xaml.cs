@@ -20,6 +20,7 @@ using System.Net.WebSockets;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Xml;
+using System.Xml.Linq;
 
 //using System.Text.Json;
 //using System.Text.Json.Serialization;
@@ -30,8 +31,6 @@ namespace Share_and_Spread
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// 
-
-
     public class DataList
     {
         public string Fullname { get; set; }
@@ -84,8 +83,33 @@ namespace Share_and_Spread
             Complaint_View_Window.Visibility = Visibility.Hidden;
         }
 
+        private void lsb_Complaint_List_PreviewMouseDown(object sender, MouseEventArgs e) {
+            var Boxitem = ItemsControl.ContainerFromElement(sender as ListBox, e.OriginalSource as DependencyObject) as ListBoxItem;
+            if (Boxitem != null)
+            {
+                tbc_List.SelectedIndex = 1;
+                var TEMP = client.Send("ViewComplaint|"+ Boxitem.Content);
+
+                if (TEMP == "Found nothing!")
+                {
+                    MessageBox.Show(TEMP);
+                }
+                else
+                {
+                    foreach (var item in TEMP.Split(new string[] { "|BRK|" }, StringSplitOptions.None))
+                    {
+                        
+                        //lsb_View_Complaint.Items.Add(new ListViewItem(new string[] { item }));
+                    }
+
+
+                }
+            }
+        }
+
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
+            lsb_Complaint_List.Items.Clear();
             var Email = tb_Login_Email.Text;
             var Password = tb_Login_Password.Text;
 
@@ -102,15 +126,20 @@ namespace Share_and_Spread
                 UserID = Int32.Parse(TEMP.Split('|')[1]);
 
                 TEMP = client.Send("Retrieve|" + UserID.ToString());
-
-                ColumnDefinition colDef1 = new ColumnDefinition();
-                Grid_Complaint_List.ColumnDefinitions.Add(colDef1);
-                for (int i = 1; i < TEMP.Split(new string[] { "|BRK|" }, StringSplitOptions.None).Length; i++)
+                if (TEMP == "Found nothing!")
                 {
+                    MessageBox.Show(TEMP);
+                }
+                else
+                {
+                    foreach (var item in TEMP.Split(new string[] { "|BRK|" }, StringSplitOptions.None))
+                    {
+                        String[] itemsDepth = item.Split(new string[] { ";;;" }, StringSplitOptions.None);
+                        // MessageBox.Show(itemsDepth[0]);
+                        lsb_Complaint_List.Items.Add(itemsDepth[0] + ":" + itemsDepth[1]);
+                    }
 
-                    lsb_Complaint_List.Items.Add(TEMP.Split(new string[] { "|BRK|" }, StringSplitOptions.None)[i]);
-
-
+                    
                 }
 
             }
@@ -119,6 +148,7 @@ namespace Share_and_Spread
                 MessageBox.Show("Failed to login!");
             }
         }
+
         /////////////////////////////////////// SEPARATE FUNCTIONS ////////////////////////////////////////////////////////////////////////
     }
 
